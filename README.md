@@ -3,11 +3,7 @@
 One Day workshop on web extraction using Celery and RabbitMQ.
 
 ## What will you learn by the end of this workshop?
-- By the end of this workshop you will learn how to scrap a website using python
-- You will learn how to save the scrapped data in a database.
-- You will learn how to run a date range and incremental extractors.
-- You will learn how to debug a python program.
-- You will learn time profiling and memory profiling.
+- By the end of this workshop you will learn how to scrap a website using 
 
 ## Schedule
 | Time          | Topics
