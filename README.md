@@ -1,9 +1,13 @@
 # Data Engineering Workshop 4
 
-One-day workshop on web extraction using Celery and RabbitMQ.
+One day workshop on web extraction using Celery and RabbitMQ.
 
 ## What will you learn by the end of this workshop?
-- By the end of this workshop you will learn how to scrap a website using 
+- By the end of this workshop you will learn how to automate the scraping of a website using microservices.
+- You will learn about celery and rabbitMq.
+- You will learn how to integrate different microservices.
+- You will learn how to run the synchronous task queue.
+- You will learn how to create task stats and logs.
 
 ## Schedule
 | Time          | Topics
