@@ -7,7 +7,7 @@ One day workshop on web extraction using Celery and RabbitMQ.
 - You will learn about celery and rabbitMq.
 - You will learn how to integrate different microservices.
 - You will learn how to run the synchronous task queue.
-- You will learn how to create task stats and logs.
+- You will learn how to create task's stats and logs.
 
 ## Schedule
 | Time          | Topics
