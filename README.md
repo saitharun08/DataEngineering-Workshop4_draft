@@ -12,7 +12,7 @@ One day workshop on web extraction using Celery and RabbitMQ.
 ## Schedule
 | Time          | Topics
 |---------------|-------
-| 09:00 - 10:00 |  
+| 09:00 - 10:00 |  [`Introduction to Celery and RabbitMQ`](docs/intro_celery_rabbitMq.md)
 | 10:00 - 12:00 |  
 | 12:00 - 01:00 | 
 | 01:00 - 02:00 |  `Break`
