@@ -11,7 +11,7 @@
 - Scalability for handling large workloads.
 - Monitoring and management tools.
 
-
+![alt text](./docs/celery_png.png)
 
 
 # Introduction to RabbitMQ
