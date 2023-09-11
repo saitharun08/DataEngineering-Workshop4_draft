@@ -11,6 +11,11 @@
 - Scalability for handling large workloads.
 - Monitoring and management tools.
 
+### Example
+- Consider a Django package; it has many tasks running simultaneously.
+- If we wait for one task to complete before picking the next one, it will significantly increase the page loading time.
+- To avoid this, we can run the tasks in parallel. This can be achieved by using Celery.
+
 ![alt text](./celery_png.png)
 
 
