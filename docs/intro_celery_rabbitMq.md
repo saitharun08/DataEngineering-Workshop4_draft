@@ -20,4 +20,9 @@
 
 
 # Introduction to RabbitMQ
+- RabbitMQ is an open-source message broker software that facilitates communication between different parts of a distributed system.
+- It is a key component of many modern software architectures, particularly in systems where different parts need to exchange data and messages in a scalable and asynchronous manner. Here's a brief overview of RabbitMQ
 
+### Why we need RabbitMQ
+- Celery requires a service to send and receive messages; usually, this comes in the form of a separate service called a message broker.
+- 
