@@ -12,11 +12,11 @@
 - Monitoring and management tools.
 
 ### Example
-- Consider a Django package; it has many tasks running simultaneously.
+- Consider a Django package, it has many tasks running simultaneously.
 - If we wait for one task to complete before picking the next one, it will significantly increase the page loading time.
 - To avoid this, we can run the tasks in parallel. This can be achieved by using Celery.
 
-![alt text](./celery_png.png)
+![Celery Example](./celery_png.png)
 
 ### What we need to use Celery
 - To use Celery we need a message transport, as Celery can only create messages and keep them ready to be transported.
@@ -28,12 +28,16 @@
 - It is a key component of many modern software architectures, particularly in systems where different parts need to exchange data and messages in a scalable and asynchronous manner.
 - RabbitMQ is feature-complete, stable, durable, and easy to install. It’s an excellent choice for a production environment.
 
-## Key features of RabbitMQ
+### Key features of RabbitMQ
 - Reliability
 - Flexible Routing
 - Clustering
 - Highly Available Queues
 - Management UI
+
+### How RabbitMQ and Celery works
+![RabbitMQ Example](./rabbitMqCeleryExample.png)
+
 
 
 
