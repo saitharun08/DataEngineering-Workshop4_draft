@@ -38,12 +38,30 @@
 ### How RabbitMQ and Celery works
 ![RabbitMQ Example](./rabbitMqCeleryExample.png)
 
-1. Install RabbitMQ by using the following commands:
+1. Install RabbitMQ by using the following commands
+
 ```sudo apt-get install rabbitmq-server```
+
 2. Celery is on the Python Package, so we can install it using pip
-3. Create a python script for celery to perform a simple task
+
+```pip install celery```
+
+3. Create a python script tasks.py for celery to perform a simple task
+
+```
+from celery import Celery
+
+app = Celery('tasks', broker='pyamqp://guest@localhost//')
+
+@app.task
+def add(x, y):
+    return x + y
+```
+
 4. Now we can use the below command to executing our program with the worker argument
-   
+
+
+```celery -A tasks worker --loglevel=INFO```  
 
 
 
