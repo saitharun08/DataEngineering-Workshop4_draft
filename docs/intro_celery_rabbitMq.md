@@ -18,11 +18,25 @@
 
 ![alt text](./celery_png.png)
 
+### What we need to use Celery
+- To use Celery we need a message transport, as Celery can only create messages and keep them ready to be transported.
+- These transporters are called as Brokers, The RabbitMQ is the well known broker transports.
+
 
 # Introduction to RabbitMQ
 - RabbitMQ is an open-source message broker software that facilitates communication between different parts of a distributed system.
-- It is a key component of many modern software architectures, particularly in systems where different parts need to exchange data and messages in a scalable and asynchronous manner. Here's a brief overview of RabbitMQ
+- It is a key component of many modern software architectures, particularly in systems where different parts need to exchange data and messages in a scalable and asynchronous manner.
+- RabbitMQ is feature-complete, stable, durable, and easy to install. It’s an excellent choice for a production environment.
 
-### Why we need RabbitMQ
-- Celery requires a service to send and receive messages; usually, this comes in the form of a separate service called a message broker.
-- 
+## Key features of RabbitMQ
+- Reliability
+- Flexible Routing
+- Clustering
+- Highly Available Queues
+- Management UI
+
+
+
+
+
+
