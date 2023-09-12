@@ -69,7 +69,7 @@ def add(x, y):
 celery -A tasks worker --loglevel=INFO
 ```
 
-** Note **: We can use the follwing commands to know more about the arguments which can be used with celery
+**Note**: We can use the follwing commands to know more about the arguments which can be used with celery
 
 ```
 celery worker --help
