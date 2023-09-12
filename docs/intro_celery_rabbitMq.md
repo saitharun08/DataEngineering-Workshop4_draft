@@ -40,11 +40,15 @@
 
 1. Install RabbitMQ by using the following commands
 
-```sudo apt-get install rabbitmq-server```
+```
+sudo apt-get install rabbitmq-server
+```
 
 2. Celery is on the Python Package, so we can install it using pip
 
-```pip install celery```
+```
+pip install celery
+```
 
 3. Create a python script tasks.py for celery to perform a simple task
 
@@ -61,7 +65,9 @@ def add(x, y):
 4. Now we can use the below command to executing our program with the worker argument
 
 
-```celery -A tasks worker --loglevel=INFO```  
+```
+celery -A tasks worker --loglevel=INFO
+```  
 
 
 
