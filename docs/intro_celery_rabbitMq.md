@@ -66,15 +66,12 @@ rabbitmqctl set_permissions -p jimmy_vhost jimmy ".*" ".*" ".*"
 ```
 - The ".*" ".*" ".*" string at the end of the above command means that the user “jimmy” will have all configure, write and read permissions.
 - To find more information about permission control in RabbitMQ, you can refer to http://www.rabbitmq.com/access-control.html.
-3. 
-5. Celery is on the Python Package, so we can install it using pip
 
+3.  Open new terminal and install Celery using pip
 ```
 pip install celery
 ```
-
-3. Follow the below structure for our demo project:
-
+4. Follow the below structure of our demo project
 ```
 test_celery
     __init__.py
@@ -82,24 +79,53 @@ test_celery
     tasks.py
     run_tasks.py
 ```
-
-3. Create a python script tasks.py for celery to perform a simple task
-
+5. Add the following code in celery.py
 ```
+from __future__ import absolute_import
 from celery import Celery
 
-app = Celery('tasks', broker='pyamqp://guest@localhost//')
+app = Celery('test_celery',
+             broker='amqp://jimmy:jimmy123@localhost/jimmy_vhost',
+             backend='rpc://',
+             include=['test_celery.tasks'])
+```
+6. In this file, we define our task longtime_add
+```
+from __future__ import absolute_import
+from test_celery.celery import app
+import time
 
 @app.task
-def add(x, y):
+def longtime_add(x, y):
+    print 'long time task begins'
+    # sleep 5 seconds
+    time.sleep(5)
+    print 'long time task finished'
     return x + y
 ```
-
-4. Now we can use the below command to executing our program with the worker argument
-
-
+7. After setting up Celery, we need to run our task, which is included in the runs_tasks.py
 ```
-celery -A tasks worker --loglevel=INFO
+from .tasks import longtime_add
+import time
+
+if __name__ == '__main__':
+    result = longtime_add.delay(1,2)
+    # at this time, our task is not finished, so it will return False
+    print 'Task finished? ', result.ready()
+    print 'Task result: ', result.result
+    # sleep 10 seconds to ensure the task has been finished
+    time.sleep(10)
+    # now the task should be finished and ready method will return True
+    print 'Task finished? ', result.ready()
+    print 'Task result: ', result.result
+```
+8. Now, we can start Celery worker using the command below (run in the parent folder of our project folder test_celery)
+```
+celery -A test_celery worker --loglevel=info
+```
+9. In another console, input the following (run in the parent folder of our project folder test_celery)
+```
+python -m test_celery.run_tasks
 ```
 
 **Note**: We can use the follwing commands to know more about the arguments which can be used with celery
@@ -108,9 +134,3 @@ celery -A tasks worker --loglevel=INFO
 celery worker --help
 celery help
 ```
-
-
-
-
-
-
