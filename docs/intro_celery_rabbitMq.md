@@ -46,7 +46,7 @@
 
 Now let’s create a simple project to demonstrate the use of Celery.
 
-1. Install RabbitMQ by using the following commands
+**Step 1** Install RabbitMQ by using the following commands
 ```
 sudo apt-get install rabbitmq-server
 ```
@@ -57,7 +57,7 @@ rabbitmq-server
 ```
 - If the above command didn't work, you can try script provide .[here](https://www.rabbitmq.com/install-debian.html#apt-quick-start-cloudsmith) to install RabbitMQ.
 
-2. Configure RabbitMQ for Celery, use the following commands.
+**Step 2** Configure RabbitMQ for Celery, use the following commands.
 ```
 rabbitmqctl add_user jimmy jimmy123
 rabbitmqctl add_vhost jimmy_vhost
@@ -67,11 +67,11 @@ rabbitmqctl set_permissions -p jimmy_vhost jimmy ".*" ".*" ".*"
 - The ".*" ".*" ".*" string at the end of the above command means that the user “jimmy” will have all configure, write and read permissions.
 - To find more information about permission control in RabbitMQ, you can refer to http://www.rabbitmq.com/access-control.html.
 
-3.  Open new terminal and install Celery using pip
+**Step 3**  Open new terminal and install Celery using pip
 ```
 pip install celery
 ```
-4. Follow the below structure of our demo project
+**Step 4** Follow the below structure of our demo project
 ```
 test_celery
     __init__.py
@@ -79,7 +79,7 @@ test_celery
     tasks.py
     run_tasks.py
 ```
-5. Add the following code in celery.py
+**Step 5** Add the following code in celery.py
 ```
 from __future__ import absolute_import
 from celery import Celery
@@ -89,7 +89,7 @@ app = Celery('test_celery',
              backend='rpc://',
              include=['test_celery.tasks'])
 ```
-6. In this file, we define our task longtime_add
+**Step 6** In this file, we define our task longtime_add
 ```
 from __future__ import absolute_import
 from test_celery.celery import app
@@ -103,7 +103,7 @@ def longtime_add(x, y):
     print 'long time task finished'
     return x + y
 ```
-7. After setting up Celery, we need to run our task, which is included in the runs_tasks.py
+**Step 7** After setting up Celery, we need to run our task, which is included in the runs_tasks.py
 ```
 from .tasks import longtime_add
 import time
@@ -119,11 +119,11 @@ if __name__ == '__main__':
     print 'Task finished? ', result.ready()
     print 'Task result: ', result.result
 ```
-8. Now, we can start Celery worker using the command below (run in the parent folder of our project folder test_celery)
+**Step 8** Now, we can start Celery worker using the command below (run in the parent folder of our project folder test_celery)
 ```
 celery -A test_celery worker --loglevel=info
 ```
-9. In another console, input the following (run in the parent folder of our project folder test_celery)
+**Step 9** In another console, input the following (run in the parent folder of our project folder test_celery)
 ```
 python -m test_celery.run_tasks
 ```
@@ -134,3 +134,14 @@ python -m test_celery.run_tasks
 celery worker --help
 celery help
 ```
+### Monitor Celery in Real Time
+- Flower is a real-time web-based monitor for Celery. Using Flower, you could easily monitor your task progress and history.
+- We can use pip to install Flower
+```
+pip install flower
+```
+- To start the Flower web console, we need to run the following command (run in the parent folder of our project folder test_celery)
+```
+celery -A test_celery flower
+```
+- Flower will run a server with default port 5555, and you can access the web console at http://localhost:5555.
