@@ -47,19 +47,17 @@
 Now let’s create a simple project to demonstrate the use of Celery.
 
 1. Install RabbitMQ by using the following commands
-
 ```
 sudo apt-get install rabbitmq-server
 ```
- **Note**: 
+**Note**: 
 - Check the proper installation of RabbitMQ using the below command in terminal
 ```
 rabbitmq-server
 ```
 - If the above command didn't work, you can try script provide .[here](https://www.rabbitmq.com/install-debian.html#apt-quick-start-cloudsmith) to install RabbitMQ.
 
-2. Configure RabbitMQ for Celery, use the following commands
-   
+2. Configure RabbitMQ for Celery, use the following commands.
 ```
 rabbitmqctl add_user jimmy jimmy123
 rabbitmqctl add_vhost jimmy_vhost
@@ -68,7 +66,7 @@ rabbitmqctl set_permissions -p jimmy_vhost jimmy ".*" ".*" ".*"
 ```
 - The ".*" ".*" ".*" string at the end of the above command means that the user “jimmy” will have all configure, write and read permissions.
 - To find more information about permission control in RabbitMQ, you can refer to http://www.rabbitmq.com/access-control.html.
-
+3. 
 5. Celery is on the Python Package, so we can install it using pip
 
 ```
