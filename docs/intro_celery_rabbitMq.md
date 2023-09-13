@@ -35,20 +35,47 @@
 - Highly Available Queues
 - Management UI
 
-### Basic Concepts
+## Basic Concepts
 ![RabbitMQ Example](./rabbitMqCeleryExample.png)
 
 - **Broker**: The Broker (RabbitMQ) is responsible for the creation of task queues, dispatching tasks to task queues according to some routing rules, and then delivering tasks from task queues to workers.
 - **Consumer (Celery Workers)**: The Consumer is the one or multiple Celery workers executing the tasks. You could start many workers depending on your use case.
 - **Result Backend**: The Result Backend is used for storing the results of your tasks. However, it is not a required element, so if you do not include it in your settings, you cannot access the results of your tasks.
 
-### A simple Demo Project
+## A simple Demo Project
 
 Now let’s create a simple project to demonstrate the use of Celery.
 
-## Project Structure
+1. Install RabbitMQ by using the following commands
 
-Follow the below structure for our demo project:
+```
+sudo apt-get install rabbitmq-server
+```
+ **Note**: 
+- Check the proper installation of RabbitMQ using the below command in terminal
+```
+rabbitmq-server
+```
+- If the above command didn't work, you can try script provide .[here](https://www.rabbitmq.com/install-debian.html#apt-quick-start-cloudsmith) to install RabbitMQ.
+
+2. Configure RabbitMQ for Celery, use the following commands
+   
+```
+rabbitmqctl add_user jimmy jimmy123
+rabbitmqctl add_vhost jimmy_vhost
+rabbitmqctl set_user_tags jimmy jimmy_tag
+rabbitmqctl set_permissions -p jimmy_vhost jimmy ".*" ".*" ".*"
+```
+- The ".*" ".*" ".*" string at the end of the above command means that the user “jimmy” will have all configure, write and read permissions.
+- To find more information about permission control in RabbitMQ, you can refer to http://www.rabbitmq.com/access-control.html.
+
+5. Celery is on the Python Package, so we can install it using pip
+
+```
+pip install celery
+```
+
+3. Follow the below structure for our demo project:
 
 ```
 test_celery
@@ -56,25 +83,6 @@ test_celery
     celery.py
     tasks.py
     run_tasks.py
-```
-
-1. Install RabbitMQ by using the following commands
-
-```
-sudo apt-get install rabbitmq-server
-```
-**Note**: 
-- Check the proper installation of RabbitMQ using the below command in terminal
-```
-rabbitmq-server
-```
-- If the above command didn't work, you can try script provide .[here](https://www.rabbitmq.com/install-debian.html#apt-quick-start-cloudsmith) to install RabbitMQ.
-
-
-2. Celery is on the Python Package, so we can install it using pip
-
-```
-pip install celery
 ```
 
 3. Create a python script tasks.py for celery to perform a simple task
