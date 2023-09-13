@@ -15,7 +15,7 @@ One day workshop on web extraction using Celery and RabbitMQ.
 | 09:00 - 11:00 |  [`Introduction to Celery and RabbitMQ`](docs/intro_celery_rabbitMq.md)
 | 11:00 - 01:00 |  [`Introduction to Microservice Architecture`](docs/microservice_architecture.md)
 | 01:00 - 02:00 |  `Break`
-| 02:00 - 02:30 |  [`Adding Job Logs and Job Stats`](docs/dockeriseCeleryRabbitMQ.md)
+| 02:00 - 02:30 |  [`Adding Job Logs and Job Stats`](docs/adding_job-logs.md)
 | 02:30 - 04:30 |  [`Creating Task and Running in Periodically`](docs/dockeriseCeleryRabbitMQ.md)
 | 04:30 - 04:45 |  `Q & A`
 | 04:45 - 05:00 |  [`Wrapping Up`](/docs/workshop4_home_work.md)
